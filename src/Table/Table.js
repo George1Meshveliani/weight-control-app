@@ -8,14 +8,23 @@ class Table extends React.Component {
         <table>
           <tbody>
             <tr>
-              <th>Username</th>
+              <th>Name</th>
               <th>Password</th>
+              <th>Email</th>
+              <th>DW</th>
+              <th>DMC</th>
+              <th>DAC</th>
             </tr>
             {items.map(item => {
               return (
                 <tr>
                   <td>{item.username}</td>
                   <td>{item.password}</td>
+                  <td>{item.email}</td>
+                  <td>{item.dw}</td>
+                  <td>{item.dmc}</td>
+                  <td>{item.dac}</td>
+                  
                 </tr>
               );
             })}
