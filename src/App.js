@@ -6,7 +6,7 @@ import './App.css';
 
 import Form from './Form/Form';
 import Table from './Table/Table';
-//import Headline from './Headline/Headline';
+import Headline from './Headline/Headline';
 //import Dashboard from './Dashboard/Dashboard';
 
 class App extends Component {
@@ -62,7 +62,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/*<Headline />*/}
+        <Headline />
         <Form handleFormSubmit={ this.handleFormSubmit } 
           handleInputChange={ this.handleInputChange }
           newUsername={ this.state.username }
@@ -71,6 +71,10 @@ class App extends Component {
           newDW={ this.state.dw} 
           newDMC={ this.state.dmc}
           newDAC= { this.state.dac}/>
+          
+          <button id="logout" type="submit" value="Submit1">Log out</button>
+          
+          <br></br>
         <Table items={ this.state.items }/>
         {/*<Dashboard />*/}
       </div>

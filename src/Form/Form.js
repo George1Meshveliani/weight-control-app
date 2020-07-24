@@ -46,7 +46,7 @@ class Form extends React.Component {
           </label>
           <button type="submit" value="Submit">Register</button>
           <br></br>
-          <button id="logout" type="submit" value="Submit1">Log out</button>
+          
         </form>
       </div>
     );
