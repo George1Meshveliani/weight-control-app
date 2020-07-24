@@ -7,6 +7,7 @@ import './App.css';
 import Form from './Form/Form';
 import Table from './Table/Table';
 import Headline from './Headline/Headline';
+import Info from './Info/Info';
 //import Dashboard from './Dashboard/Dashboard';
 
 class App extends Component {
@@ -76,7 +77,7 @@ class App extends Component {
           
           <br></br>
         <Table items={ this.state.items }/>
-        {/*<Info />*/}
+        <Info />
         {/*<Dashboard />*/}
       </div>
     );
