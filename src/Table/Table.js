@@ -21,9 +21,9 @@ class Table extends React.Component {
                   <td>{item.username}</td>
                   <td>{item.password}</td>
                   <td>{item.email}</td>
-                  <td>{item.dw}</td>
-                  <td>{item.dmc}</td>
-                  <td>{item.dac}</td>
+                  <td>{item.dw + ' kg'}</td>
+                  <td>{item.dmc + ' cs'}</td>
+                  <td>{item.dac + 'cs'}</td>
                   
                 </tr>
               );

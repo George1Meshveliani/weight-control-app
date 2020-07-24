@@ -76,6 +76,7 @@ class App extends Component {
           
           <br></br>
         <Table items={ this.state.items }/>
+        {/*<Info />*/}
         {/*<Dashboard />*/}
       </div>
     );
