@@ -7,12 +7,15 @@ import './App.css';
 import Form from './Form/Form';
 import Table from './Table/Table';
 import Headline from './Headline/Headline';
-import Info from './Info/Info';
+import Info1 from './Info1/Info1';
+import Table1 from './Table1/Table1';
 //import Dashboard from './Dashboard/Dashboard';
 
 class App extends Component {
   constructor() {
     super();
+
+   
 
     this.state = {
       username: '',
@@ -21,7 +24,10 @@ class App extends Component {
       dw: '',
       dmc: '',
       dac: '',
-      items: []
+      date: '',
+      weight: '',
+      items: [],
+      items1: []
     }
   };
 
@@ -50,6 +56,26 @@ class App extends Component {
     });
   };
 
+  handleFormSubmit1 = (e) => {
+    e.preventDefault();
+
+    let items1 = [...this.state.items1];
+
+    items1.push({
+      date: this.state.date,
+      weight: this.state.weight,
+      
+    });
+
+    this.setState({
+      items1,
+      weight: '',
+      date: ''
+      
+    });
+  };
+
+
   handleInputChange = (e) => {
     let input = e.target;
     let name = e.target.name;
@@ -59,6 +85,13 @@ class App extends Component {
       [name]: value
     })
   };
+
+  /*removeItems = (p) => {
+    var array = this.state.items;
+    var index = array.indexOf(p.target.value); 
+    delete array[index];
+  };*/
+  
 
   render() {
     return (
@@ -71,13 +104,23 @@ class App extends Component {
           newEmail={ this.state.email}
           newDW={ this.state.dw} 
           newDMC={ this.state.dmc}
-          newDAC= { this.state.dac}/>
+          newDAC= { this.state.dac}
+          indeX= { this.removeItems}/>
           
+
           <button id="logout" type="submit" value="Submit1">Log out</button>
           
           <br></br>
         <Table items={ this.state.items }/>
-        <Info />
+
+        
+        <Info1 handleFormSubmit1={ this.handleFormSubmit1 } 
+        handleInputChange1={ this.handleInputChange }
+        newDate={ this.state.date }
+        newWeight={ this.state.weight }/>
+
+        <Table1 items1={ this.state.items1 }/>
+
         {/*<Dashboard />*/}
       </div>
     );

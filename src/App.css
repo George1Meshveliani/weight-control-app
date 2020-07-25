@@ -55,3 +55,20 @@
   color: white;
   margin: 25px 0;
 }
+
+#Table1 {
+  width: 100%;
+}
+
+#Table1 table {
+  width: 100%;
+}
+
+#Table1 td {
+    border: 1px solid #ccc;
+    width: 20%;
+}
+
+#Table1 th {
+    width: 20%;
+}

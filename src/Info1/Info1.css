@@ -1,4 +1,4 @@
-/*input {
+#date, #weight{
     display: flex;
     width: 90%;
     height: 2.375rem;
@@ -11,8 +11,15 @@
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-form {
+.UserForm1{
     background: var(--color-raghacnairi);
     padding: 2.5rem 0.625rem;
     border-radius: 50px;
-  } */
+  } 
+
+.label1 {
+        float: left;
+        width: 10em;
+        margin-right: 1em;
+        
+}
