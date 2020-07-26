@@ -22,8 +22,8 @@ class Table extends React.Component {
                   <td>{item.username}</td>
                   
                   <td>{item.email}</td>
-                  <td>{item.dw + ' kg'}</td>
-                  <td>{item.dmc + ' cs'}</td>
+                  <td >{item.dw + ' kg'}</td>
+                  <td >{item.dmc + ' cs'}</td>
                   <td>{item.dac + 'cs'}</td>
                   <button onClick={this.props.removeItems}>X
               </button>

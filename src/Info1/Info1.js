@@ -11,7 +11,7 @@ class Info1 extends React.Component {
           Date:
           <input id="date" value={this.props.newDate} 
             type="date" name="date"
-            onChange={this.props.handleInputChange1} />
+           onChange={this.props.handleInputChange1} />
           </label>
 
           

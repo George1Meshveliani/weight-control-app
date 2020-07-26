@@ -24,8 +24,10 @@ class App extends Component {
       dw: '',
       dmc: '',
       dac: '',
+
       date: '',
       weight: '',
+
       items: [],
       items1: []
     }
@@ -64,14 +66,14 @@ class App extends Component {
     items1.push({
       date: this.state.date,
       weight: this.state.weight,
-      
+      dw: this.state.dw,
     });
 
     this.setState({
       items1,
       weight: '',
-      date: ''
-      
+      date: '',
+      dw: ''
     });
   };
 
@@ -117,9 +119,11 @@ class App extends Component {
         <Info1 handleFormSubmit1={ this.handleFormSubmit1 } 
         handleInputChange1={ this.handleInputChange }
         newDate={ this.state.date }
-        newWeight={ this.state.weight }/>
+        newWeight={ this.state.weight }
+        newDW={ this.state.dw}/>
 
-        <Table1 items1={ this.state.items1 }/>
+        <Table1 items1={ this.state.items1 } 
+        />
 
         {/*<Dashboard />*/}
       </div>
