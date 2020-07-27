@@ -7,35 +7,35 @@
   text-align: center;
 }
 
-#Table {
+#UserList {
   width: 100%;
 }
 
-#Table table {
+#UserList table {
   width: 100%;
 }
 
-#Table td {
+#UserList td {
     border: 1px solid #ccc;
     width: 20%;
 }
 
-#Table th {
+#UserList th {
     width: 20%;
 }
 
-#Form label {
+#RegForm label {
     display: block;
     margin: 15px 0;
     
 }
 
-#Form input {
+#RegForm input {
  margin-left: 10px; 
  
 }
 
-#Form button {
+#RegForm button {
   width: 250px;
   padding: 15px 0;
   background-color: rgb(0, 250, 0, 0.5);
@@ -56,31 +56,31 @@
   margin: 25px 0;
 }
 
-#Table1, #Table2 {
+#WeightList, #MealList {
   width: 100%;
 }
 
-#Table1 table {
+#WeightList table {
   width: 100%;
 }
 
-#Table2 table {
+#MealList table {
   width: 100%;
 }
 
-#Table1 td {
+#WeightList td {
     border: 1px solid #ccc;
     width: 20%;
 }
-#Table2 td {
+#MealList td {
   border: 1px solid #ccc;
   width: 20%;
 }
 
-#Table1 th {
+#WeightList th {
     width: 20%;
 }
 
-#Table2 th {
+#MealList th {
   width: 20%;
 }

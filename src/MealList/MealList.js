@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 
 
-class Table2 extends React.Component {
+class MealList extends React.Component {
   render() {
     
    
     const items2 = this.props.items2;
     return (
-      <div id="Table2" >
+      <div id="MealList" >
         <table>
           <tbody>
             <tr>
@@ -32,4 +32,4 @@ class Table2 extends React.Component {
   }
 }
 
-export default Table2;
+export default MealList;

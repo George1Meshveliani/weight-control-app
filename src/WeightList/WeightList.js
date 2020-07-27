@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 
-class Table1 extends React.Component {
+class WeightList extends React.Component {
   render() {
     
     const desiredWeight = this.props.desiredWeight;
@@ -11,7 +11,7 @@ class Table1 extends React.Component {
     console.log("This is my props object:", this.props);
     
     return (
-      <div id="Table1" >
+      <div id="WeightList" >
         <table>
           <tbody>
             <tr>
@@ -33,4 +33,4 @@ class Table1 extends React.Component {
   }
 }
 
-export default Table1;
+export default WeightList;

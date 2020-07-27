@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import './Info1.css';
-class Info1 extends React.Component {
+import './WeightInfo.css';
+class WeightInfo extends React.Component {
   render() {
     return (
-      <div id="Form">
+      <div id="RegForm">
         <h3>Information Desk</h3>  
         <form className="UserForm1" onSubmit={this.props.handleFormSubmit1}>
           <label className="label1" htmlFor="date">
@@ -31,4 +31,4 @@ class Info1 extends React.Component {
   }
 }
 
-export default Info1;
+export default WeightInfo;

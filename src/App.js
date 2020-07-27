@@ -4,13 +4,13 @@ import './App.css';
 ///import UserInput from './UserInput/UserInput';
 //import UserOutput from './UserOutput/UserOutput';*/}
 
-import Form from './Form/Form';
-import Table from './Table/Table';
+import RegForm from './RegForm/RegForm';
+import UserList from './UserList/UserList';
 import Headline from './Headline/Headline';
-import Info1 from './Info1/Info1';
-import Table1 from './Table1/Table1';
-import Info2 from './Info2/Info2';
-import Table2 from './Table2/Table2';
+import WeightInfo from './WeightInfo/WeighInfo';
+import WeightList from './WeightList/WeightList';
+import MealInfo from './MealInfo/MealInfo';
+import MealList from './MealList/MealList';
 //import Dashboard from './Dashboard/Dashboard';
 
 class App extends Component {
@@ -105,38 +105,41 @@ class App extends Component {
 
   render() {
 
-    let content;
-    if (!this.state.user.username) {
-      content = <Form onFormSubmit={this.handleRegFormSubmit} />;
-    } else {
-      content = <div><button id="logout" type="submit" value="Submit1">Log out</button>
+   // if (!this.state.user.username) return <Form onFormSubmit={this.handleRegFormSubmit} />;
+
+    let regForm = this.state.user.username ? <h2>Thank you for Registration</h2>
+      : <RegForm onFormSubmit={this.handleRegFormSubmit} />;
+   
+
+    return (
+      <div className="App">
+        <Headline />
+        {regForm}
+        
+        <button id="logout" type="submit" value="Submit1">Log out</button>
 
         <br></br>
-        <Table userInfo={this.state.user} />
+        <UserList userInfo={this.state.user} />
 
-        <Info1 handleFormSubmit1={this.handleFormSubmit1}
-          handleInputChange1={this.handleInputChange}
-          newDate={this.state.date}
-          newWeight={this.state.weight}
-          newDW={this.state.dw} />
-
-        <Table1 weightRecords={this.state.items1} desiredWeight={this.state.user.dw}
+        <WeightInfo handleFormSubmit1={this.handleFormSubmit1}
+        handleInputChange1={this.handleInputChange}
+        newDate={this.state.date}
+        newWeight={this.state.weight}
+        newDW={this.state.dw}
         />
 
-        <Info2 handleFormSubmit2={this.handleFormSubmit2}
+        <WeightList weightRecords={this.state.items1} desiredWeight={this.state.user.dw}
+        />
+
+        <MealInfo handleFormSubmit2={this.handleFormSubmit2}
           handleInputChange2={this.handleInputChange}
           newDate={this.state.date}
           newMeal={this.state.meal}
           newCalories={this.state.calories}
           newDW={this.state.dw} />
 
-        <Table2 items2={this.state.items2}/></div>;
-    }
-
-    return (
-      <div className="App">
-        <Headline />
-        {content}
+        <MealList items2={this.state.items2}
+        />
 
         {/*<Dashboard />*/}
       </div>

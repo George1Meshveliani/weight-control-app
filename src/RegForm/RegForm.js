@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import './Form.css';
-class Form extends React.Component {
+import './RegForm.css';
+class RegForm extends React.Component {
 
   constructor(props) {
     super(props);
@@ -26,7 +26,7 @@ class Form extends React.Component {
 
   render() {
     return (
-      <div id="Form">
+      <div id="RegForm">
         <h3>During the registration, please consider following: desired weight-DW, desired meal calories per day-
             DMC, desired activity calories per day-DAC</h3>  
         <form className="UserForm" onSubmit={this.handleSubmit}>
@@ -69,4 +69,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default RegForm;

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-class Table extends React.Component {
+class UserList extends React.Component {
   render() {
     if (!this.props.userInfo.username) return <h2>Please fill out the reg form!</h2>;
     
     const items = [this.props.userInfo];
     return (
-      <div id="Table">
+      <div id="UserList">
         <table>
           <tbody>
             <tr>
@@ -22,7 +22,6 @@ class Table extends React.Component {
               return (
                 <tr>
                   <td>{item.username}</td>
-                  
                   <td>{item.email}</td>
                   <td >{item.dw === undefined ? '' : item.dw + ' kg'}</td>
                   <td >{item.dmc === undefined ? '' : item.dmc + ' cs'}</td>
@@ -38,4 +37,4 @@ class Table extends React.Component {
   }
 }
 
-export default Table;
+export default UserList;
