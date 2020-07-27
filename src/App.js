@@ -9,6 +9,8 @@ import Table from './Table/Table';
 import Headline from './Headline/Headline';
 import Info1 from './Info1/Info1';
 import Table1 from './Table1/Table1';
+import Info2 from './Info2/Info2';
+import Table2 from './Table2/Table2';
 //import Dashboard from './Dashboard/Dashboard';
 
 class App extends Component {
@@ -28,8 +30,12 @@ class App extends Component {
       date: '',
       weight: '',
 
+      meal: '',
+      calories: '',
+
       items: [],
-      items1: []
+      items1: [],
+      items2: []
     }
   };
 
@@ -45,6 +51,12 @@ class App extends Component {
       dw: this.state.dw,
       dmc: this.state.dmc,
       dac: this.state.dac,
+
+      date: this.state.date,
+      weight: this.state.weight,
+
+      meal: this.state.meal,
+      calories: this.state.calories,
     });
 
     this.setState({
@@ -54,7 +66,13 @@ class App extends Component {
       email: '',
       dw: '',
       dmc: '',
-      dac: ''
+      dac: '',
+
+      weight: '',
+      date: '',
+
+      meals: '',
+      calories: '',
     });
   };
 
@@ -76,6 +94,27 @@ class App extends Component {
       dw: ''
     });
   };
+
+  handleFormSubmit2 = (e) => {
+    e.preventDefault();
+
+    let items2 = [...this.state.items2];
+
+    items2.push({
+      date: this.state.date,
+      meal: this.state.meal,
+      calories: this.state.calories,
+
+    });
+
+    this.setState({
+      items2,
+      date: '',
+      meal: '',
+      dw: ''
+    });
+  };
+
 
 
   handleInputChange = (e) => {
@@ -123,6 +162,16 @@ class App extends Component {
         newDW={ this.state.dw}/>
 
         <Table1 items1={ this.state.items1 } 
+        />
+        
+        <Info2 handleFormSubmit2={ this.handleFormSubmit2 } 
+        handleInputChange2={ this.handleInputChange }
+        newDate={ this.state.date }
+        newMeal={ this.state.meal }
+        newCalories={ this.state.calories }
+        newDW={ this.state.dw}/>
+        
+        <Table2 items2={ this.state.items2 } 
         />
 
         {/*<Dashboard />*/}

@@ -2,24 +2,26 @@ import React, { Component } from 'react';
 
 
 
-class Table1 extends React.Component {
+class Table2 extends React.Component {
   render() {
     
-    const desiredWeight = this.props.newDw;
-    const items1 = this.props.items1;
+   
+    const items2 = this.props.items2;
     return (
-      <div id="Table1" >
+      <div id="Table2" >
         <table>
           <tbody>
             <tr>
               <th>Date:</th>
-              <th>Weight:</th>
+              <th>Meal:</th>
+              <th>Calories:</th>
               </tr>
-            {items1.map(item => {
+            {items2.map(item => {
               return (
                 <tr>
                   <td>{item.date}</td>
-                  <td  style={{color: (item.weight <=  desiredWeight) ? 'green' : 'red'}} >{item.weight}</td>
+                  <td>{item.meal}</td>
+                  <td>{item.calories}</td>
                 </tr>
               );
             })}
@@ -30,4 +32,4 @@ class Table1 extends React.Component {
   }
 }
 
-export default Table1;
+export default Table2;

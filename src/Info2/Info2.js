@@ -1,0 +1,44 @@
+import React, { Component } from 'react';
+
+import './Info2.css';
+class Info1 extends React.Component {
+  render() {
+    return (
+      <div id="Form">
+        <h3>Information Desk</h3>  
+        <form className="UserForm" onSubmit={this.props.handleFormSubmit2}>
+
+          <label className="label2" htmlFor="date">
+          Date:
+          <input id="date" value={this.props.newDate} 
+            type="date" name="date"
+           onChange={this.props.handleInputChange2} />
+          </label>
+
+          
+          <label className="label2" htmlFor="weight">
+          Meal:
+          <input id="meal" value={this.props.newMeal} 
+            type="text" name="meal"
+            onChange={this.props.handleInputChange2} />
+          </label>
+
+          <label className="label2" htmlFor="weight">
+          Calories:
+          <input id="calories" value={this.props.newCalories} 
+            type="text" name="calories"
+            onChange={this.props.handleInputChange2} />
+          </label>
+
+
+        
+          <button type="submit" value="Submit">Add</button>
+          <br></br>
+          
+        </form>
+      </div>
+    );
+  }
+}
+
+export default Info1;

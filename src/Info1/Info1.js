@@ -6,7 +6,7 @@ class Info1 extends React.Component {
     return (
       <div id="Form">
         <h3>Information Desk</h3>  
-        <form className="UserForm" onSubmit={this.props.handleFormSubmit1}>
+        <form className="UserForm1" onSubmit={this.props.handleFormSubmit1}>
           <label className="label1" htmlFor="date">
           Date:
           <input id="date" value={this.props.newDate} 

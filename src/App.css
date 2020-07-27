@@ -56,7 +56,7 @@
   margin: 25px 0;
 }
 
-#Table1 {
+#Table1, #Table2 {
   width: 100%;
 }
 
@@ -64,11 +64,23 @@
   width: 100%;
 }
 
+#Table2 table {
+  width: 100%;
+}
+
 #Table1 td {
     border: 1px solid #ccc;
     width: 20%;
 }
+#Table2 td {
+  border: 1px solid #ccc;
+  width: 20%;
+}
 
 #Table1 th {
     width: 20%;
+}
+
+#Table2 th {
+  width: 20%;
 }
