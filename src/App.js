@@ -17,16 +17,9 @@ class App extends Component {
   constructor() {
     super();
 
-   
+
 
     this.state = {
-      username: '',
-      password: '',
-      email: '',
-      dw: '',
-      dmc: '',
-      dac: '',
-
       date: '',
       weight: '',
 
@@ -35,45 +28,21 @@ class App extends Component {
 
       items: [],
       items1: [],
-      items2: []
+      items2: [],
+      user: {},
+      weights: [],//weight list
+      meals: [] //meal list
     }
   };
 
-  handleFormSubmit = (e) => {
-    e.preventDefault();
-
-    let items = [...this.state.items];
-
-    items.push({
-      username: this.state.username,
-      password: this.state.password,
-      email: this.state.email,
-      dw: this.state.dw,
-      dmc: this.state.dmc,
-      dac: this.state.dac,
-
-      date: this.state.date,
-      weight: this.state.weight,
-
-      meal: this.state.meal,
-      calories: this.state.calories,
-    });
+  handleRegFormSubmit = (form) => {
+    console.log("-> SUBMITTED FORM: ", form);
 
     this.setState({
-      items,
-      username: '',
-      password: '',
-      email: '',
-      dw: '',
-      dmc: '',
-      dac: '',
-
-      weight: '',
-      date: '',
-
-      meals: '',
-      calories: '',
+      user: form
     });
+
+    //e.preventDefault();
   };
 
   handleFormSubmit1 = (e) => {
@@ -132,47 +101,42 @@ class App extends Component {
     var index = array.indexOf(p.target.value); 
     delete array[index];
   };*/
-  
+
 
   render() {
+
+    let content;
+    if (!this.state.user.username) {
+      content = <Form onFormSubmit={this.handleRegFormSubmit} />;
+    } else {
+      content = <div><button id="logout" type="submit" value="Submit1">Log out</button>
+
+        <br></br>
+        <Table userInfo={this.state.user} />
+
+        <Info1 handleFormSubmit1={this.handleFormSubmit1}
+          handleInputChange1={this.handleInputChange}
+          newDate={this.state.date}
+          newWeight={this.state.weight}
+          newDW={this.state.dw} />
+
+        <Table1 weightRecords={this.state.items1} desiredWeight={this.state.user.dw}
+        />
+
+        <Info2 handleFormSubmit2={this.handleFormSubmit2}
+          handleInputChange2={this.handleInputChange}
+          newDate={this.state.date}
+          newMeal={this.state.meal}
+          newCalories={this.state.calories}
+          newDW={this.state.dw} />
+
+        <Table2 items2={this.state.items2}/></div>;
+    }
+
     return (
       <div className="App">
         <Headline />
-        <Form handleFormSubmit={ this.handleFormSubmit } 
-          handleInputChange={ this.handleInputChange }
-          newUsername={ this.state.username }
-          newPassword={ this.state.password }
-          newEmail={ this.state.email}
-          newDW={ this.state.dw} 
-          newDMC={ this.state.dmc}
-          newDAC= { this.state.dac}
-          indeX= { this.removeItems}/>
-          
-
-          <button id="logout" type="submit" value="Submit1">Log out</button>
-          
-          <br></br>
-        <Table items={ this.state.items }/>
-
-        
-        <Info1 handleFormSubmit1={ this.handleFormSubmit1 } 
-        handleInputChange1={ this.handleInputChange }
-        newDate={ this.state.date }
-        newWeight={ this.state.weight }
-        newDW={ this.state.dw}/>
-
-        <Table1 items1={ this.state.items1 } 
-        />
-        
-        <Info2 handleFormSubmit2={ this.handleFormSubmit2 } 
-        handleInputChange2={ this.handleInputChange }
-        newDate={ this.state.date }
-        newMeal={ this.state.meal }
-        newCalories={ this.state.calories }
-        newDW={ this.state.dw}/>
-        
-        <Table2 items2={ this.state.items2 } 
-        />
+        {content}
 
         {/*<Dashboard />*/}
       </div>

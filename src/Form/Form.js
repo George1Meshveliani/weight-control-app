@@ -2,47 +2,63 @@ import React, { Component } from 'react';
 
 import './Form.css';
 class Form extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    // const value = target.name === 'isTrue' ? target.checked : target.value;
+
+    this.setState({
+      [target.name]: target.value
+    });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.onFormSubmit(this.state);
+  }
+
   render() {
     return (
       <div id="Form">
         <h3>During the registration, please consider following: desired weight-DW, desired meal calories per day-
             DMC, desired activity calories per day-DAC</h3>  
-        <form className="UserForm" onSubmit={this.props.handleFormSubmit}>
+        <form className="UserForm" onSubmit={this.handleSubmit}>
           <label htmlFor="username">
           Username:
-          <input id="username" value={this.props.newUsername} 
-            type="text" name="username"
-            onChange={this.props.handleInputChange} />
+          <input id="username" type="text" name="username"
+            onChange={this.handleInputChange} />
           </label>
           <label for="password">
           Password:
-          <input id="password" value={this.props.newPassword} 
-            type="password" name="password"
-            onChange={this.props.handleInputChange} />
+          <input id="password" type="password" name="password"
+            onChange={this.handleInputChange} />
           </label>
           <label for="email">
           Email:
-          <input id="email" value={this.props.newEmail} 
-            type="email" name="email"
-            onChange={this.props.handleInputChange} />
+          <input id="email" type="email" name="email"
+            onChange={this.handleInputChange} />
           </label>
           <label for="dw">
           DW:
-          <input id="dw" value={this.props.newDW} 
-            type="number" name="dw"
-            onChange={this.props.handleInputChange} />
+          <input id="dw" type="number" name="dw"
+            onChange={this.handleInputChange} />
           </label>
           <label for="dmc">
           DMC:
-          <input id="dmc" value={this.props.newDMC} 
-            type="number" name="dmc"
-            onChange={this.props.handleInputChange} />
+          <input id="dmc" type="number" name="dmc"
+            onChange={this.handleInputChange} />
           </label>
           <label for="dac">
           DAC:
-          <input id="dac" value={this.props.newDAC} 
-            type="number" name="dac"
-            onChange={this.props.handleInputChange} />
+          <input id="dac" type="number" name="dac"
+            onChange={this.handleInputChange} />
           </label>
           <button type="submit" value="Submit">Register</button>
           <br></br>

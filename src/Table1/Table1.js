@@ -5,8 +5,11 @@ import React, { Component } from 'react';
 class Table1 extends React.Component {
   render() {
     
-    const desiredWeight = this.props.newDw;
-    const items1 = this.props.items1;
+    const desiredWeight = this.props.desiredWeight;
+    const weightRecords = this.props.weightRecords;
+
+    console.log("This is my props object:", this.props);
+    
     return (
       <div id="Table1" >
         <table>
@@ -15,11 +18,11 @@ class Table1 extends React.Component {
               <th>Date:</th>
               <th>Weight:</th>
               </tr>
-            {items1.map(item => {
+            {weightRecords.map(item => {
               return (
                 <tr>
                   <td>{item.date}</td>
-                  <td  style={{color: (item.weight <=  desiredWeight) ? 'green' : 'red'}} >{item.weight}</td>
+                  <td  style={{color: (+item.weight <= desiredWeight) ? 'green' : 'red'}} >{item.weight}</td>
                 </tr>
               );
             })}
