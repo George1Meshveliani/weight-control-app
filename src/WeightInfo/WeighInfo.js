@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import './WeightInfo.css';
 class WeightInfo extends React.Component {
+  
+
   render() {
     return (
       <div id="RegForm">

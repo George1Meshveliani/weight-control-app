@@ -11,6 +11,8 @@ import WeightInfo from './WeightInfo/WeighInfo';
 import WeightList from './WeightList/WeightList';
 import MealInfo from './MealInfo/MealInfo';
 import MealList from './MealList/MealList';
+import ActivityInfo from './ActivityInfo/ActivityInfo'
+import ActivityList from './ActivityList/ActivtiList'
 //import Dashboard from './Dashboard/Dashboard';
 
 class App extends Component {
@@ -26,9 +28,15 @@ class App extends Component {
       meal: '',
       calories: '',
 
+      activityType: '',
+      burnedCalories: '',
+
+      dmc: '',
+      dac: '',
       items: [],
       items1: [],
       items2: [],
+      items3: [],
       user: {},
       weights: [],//weight list
       meals: [] //meal list
@@ -80,7 +88,31 @@ class App extends Component {
       items2,
       date: '',
       meal: '',
-      dw: ''
+     /* dw: '',
+      dmc: '', */
+    });
+  };
+
+  handleFormSubmit3 = (e) => {
+    e.preventDefault();
+
+    let items3 = [...this.state.items3];
+
+    items3.push({
+      date: this.state.date,
+      activityType: this.state.activityType,
+      burnedCalories: this.state.burnedCalories,
+
+    });
+
+    this.setState({
+      items3,
+      date: '',
+      activityType: '',
+      burnedCalories: '',
+     /* meal: '',
+      dw: '',
+      dmc: '', */
     });
   };
 
@@ -136,10 +168,20 @@ class App extends Component {
           newDate={this.state.date}
           newMeal={this.state.meal}
           newCalories={this.state.calories}
-          newDW={this.state.dw} />
+           />
 
-        <MealList items2={this.state.items2}
-        />
+        <MealList items2={this.state.items2} desiredCalories={this.state.user.dmc}/>
+
+        <ActivityInfo handleFormSubmit3={this.handleFormSubmit3}
+          handleInputChange3={this.handleInputChange}
+          newDate={this.state.date}
+          newActivity={this.state.activityType}
+          newBurnedCalories={this.state.burnedCalories}
+           />
+
+        <ActivityList items3={this.state.items3} 
+        desiredActivities={this.state.user.dac} 
+        newActivity1={this.state.activityType}/>
 
         {/*<Dashboard />*/}
       </div>

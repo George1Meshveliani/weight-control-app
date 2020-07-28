@@ -1,0 +1,25 @@
+#date, #activityType, #burnedCalories {
+    display: flex;
+    width: 90%;
+    height: 2.375rem;
+    padding: 0.375rem 0.75rem;
+    color: #600000;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.UserForm{
+    background: var(--color-raghacnairi);
+    padding: 2.5rem 0.625rem;
+    border-radius: 50px;
+  } 
+
+.label3 {
+        float: left;
+        width: 10em;
+        margin-right: 1em;
+        
+}

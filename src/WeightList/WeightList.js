@@ -4,11 +4,13 @@ import React, { Component } from 'react';
 
 class WeightList extends React.Component {
   render() {
+
+    
     
     const desiredWeight = this.props.desiredWeight;
     const weightRecords = this.props.weightRecords;
 
-    console.log("This is my props object:", this.props);
+   // console.log("This is my props object:", this.props);
     
     return (
       <div id="WeightList" >

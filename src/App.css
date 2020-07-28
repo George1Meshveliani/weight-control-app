@@ -84,3 +84,20 @@
 #MealList th {
   width: 20%;
 }
+
+#ActivityList {
+  width: 100%;
+}
+
+#ActivityList table {
+  width: 100%;
+}
+
+#ActivityList td {
+    border: 1px solid #ccc;
+    width: 20%;
+}
+
+#ActivityList th {
+    width: 20%;
+}
