@@ -13,7 +13,8 @@ import MealInfo from './MealInfo/MealInfo';
 import MealList from './MealList/MealList';
 import ActivityInfo from './ActivityInfo/ActivityInfo'
 import ActivityList from './ActivityList/ActivtiList'
-//import Dashboard from './Dashboard/Dashboard';
+
+import Dashboard from './Dashboard/Dashboard';
 
 class App extends Component {
   constructor() {
@@ -160,7 +161,8 @@ class App extends Component {
         newDW={this.state.dw}
         />
 
-        <WeightList weightRecords={this.state.items1} desiredWeight={this.state.user.dw}
+        <WeightList weightRecords={this.state.items1}
+         desiredWeight={this.state.user.dw}
         />
 
         <MealInfo handleFormSubmit2={this.handleFormSubmit2}
@@ -183,7 +185,13 @@ class App extends Component {
         desiredActivities={this.state.user.dac} 
         newActivity1={this.state.activityType}/>
 
-        {/*<Dashboard />*/}
+        <h3> Dashboard </h3>
+        <Dashboard weightRecords={this.state.items1} 
+        desiredWeight={this.state.user.dw} 
+        items2={this.state.items2} 
+        desiredCalories={this.state.user.dmc} 
+        items3={this.state.items3} 
+        desiredActivities={this.state.user.dac}  />
       </div>
     );
   }
