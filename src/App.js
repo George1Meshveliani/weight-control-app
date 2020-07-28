@@ -140,21 +140,19 @@ class App extends Component {
 
    // if (!this.state.user.username) return <Form onFormSubmit={this.handleRegFormSubmit} />;
 
-    let regForm = this.state.user.username ? <h2>Thank you for Registration</h2>
-      : <RegForm onFormSubmit={this.handleRegFormSubmit} />;
-   
+   let content;
+   if (!this.state.user.username) {
+     content = 
+     <RegForm onFormSubmit={this.handleRegFormSubmit} />;
+   } else {
+     content = <div> 
+       
+       <button id="logout" type="submit" value="Submit1">Log out</button>
 
-    return (
-      <div className="App">
-        <Headline />
-        {regForm}
-        
-        <button id="logout" type="submit" value="Submit1">Log out</button>
-
-        <br></br>
+         <br></br>
         <UserList userInfo={this.state.user} />
 
-        <WeightInfo handleFormSubmit1={this.handleFormSubmit1}
+         <WeightInfo handleFormSubmit1={this.handleFormSubmit1}
         handleInputChange1={this.handleInputChange}
         newDate={this.state.date}
         newWeight={this.state.weight}
@@ -192,7 +190,23 @@ class App extends Component {
         desiredCalories={this.state.user.dmc} 
         items3={this.state.items3} 
         desiredActivities={this.state.user.dac}  />
-      </div>
+        </div>
+
+
+       
+  
+
+   }
+   
+   
+
+     return (
+       <div className="App">
+         {/*<Headline />*/}
+         {/*regForm*/}
+        
+        {content}
+  //     </div>
     );
   }
 }
