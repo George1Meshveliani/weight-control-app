@@ -5,7 +5,7 @@ class MealInfo extends React.Component {
   render() {
     return (
       <div id="RegForm">
-        <h3>Information Desk</h3>  
+        <h3>Create Your Meal List</h3>  
         <form className="UserForm" onSubmit={this.props.handleFormSubmit2}>
 
           <label className="label2" htmlFor="date">
@@ -34,6 +34,7 @@ class MealInfo extends React.Component {
         
           <button type="submit" value="Submit">Add</button>
           <br></br>
+          <button type="button" onClick={this.props.goNextPage2}>Next</button>
           
         </form>
       </div>

@@ -23,6 +23,8 @@ class App extends Component {
 
 
     this.state = {
+      currentPage: 'reg',
+
       date: '',
       weight: '',
 
@@ -34,10 +36,11 @@ class App extends Component {
 
       dmc: '',
       dac: '',
+
       items: [],
       items1: [],
       items2: [],
-      items3: [],
+      activityList: [],
       user: {},
       weights: [],//weight list
       meals: [] //meal list
@@ -51,8 +54,22 @@ class App extends Component {
       user: form
     });
 
+    
+
     //e.preventDefault();
   };
+
+  goNextPage = () => {
+    this.changePage("userdata");
+  }
+
+  goNextPage1 = () => {
+    this.changePage("weightdata");
+  }
+
+  goNextPage2 = () => {
+    this.changePage("mealdata");
+  }
 
   handleFormSubmit1 = (e) => {
     e.preventDefault();
@@ -71,7 +88,13 @@ class App extends Component {
       date: '',
       dw: ''
     });
+
+    //this.changePage("weightdata");
   };
+
+  
+
+  
 
   handleFormSubmit2 = (e) => {
     e.preventDefault();
@@ -89,33 +112,47 @@ class App extends Component {
       items2,
       date: '',
       meal: '',
-     /* dw: '',
-      dmc: '', */
+      /* dw: '',
+       dmc: '', */
     });
   };
 
-  handleFormSubmit3 = (e) => {
-    e.preventDefault();
-
-    let items3 = [...this.state.items3];
-
-    items3.push({
-      date: this.state.date,
-      activityType: this.state.activityType,
-      burnedCalories: this.state.burnedCalories,
-
-    });
-
+  handleNewActivity = (newActivity) => {
     this.setState({
-      items3,
-      date: '',
-      activityType: '',
-      burnedCalories: '',
-     /* meal: '',
-      dw: '',
-      dmc: '', */
+      activityList: [...this.state.activityList, newActivity]
+    });
+
+    this.changePage("activitydata");
+  };
+
+  changePage = (newPage) => {
+    this.setState({
+      currentPage: newPage
     });
   };
+
+  // handleFormSubmit3 = (e) => {
+  //   e.preventDefault();
+
+  //   let items3 = [...this.state.items3];
+
+  //   items3.push({
+  //     date: this.state.date,
+  //     activityType: this.state.activityType,
+  //     burnedCalories: this.state.burnedCalories,
+
+  //   });
+
+  //   this.setState({
+  //     items3,
+  //     date: '',
+  //     activityType: '',
+  //     burnedCalories: '',
+  //    /* meal: '',
+  //     dw: '',
+  //     dmc: '', */
+  //   });
+  // };
 
 
 
@@ -138,75 +175,96 @@ class App extends Component {
 
   render() {
 
-   // if (!this.state.user.username) return <Form onFormSubmit={this.handleRegFormSubmit} />;
+    // if (!this.state.user.username) return <Form onFormSubmit={this.handleRegFormSubmit} />;
 
-   let content;
-   if (!this.state.user.username) {
-     content = 
-     <RegForm onFormSubmit={this.handleRegFormSubmit} />;
-   } else {
-     content = <div> 
-       
-       <button id="logout" type="submit" value="Submit1">Log out</button>
+    let content;
+    if (this.state.currentPage === "reg") {
+      content = <RegForm onFormSubmit={this.handleRegFormSubmit} 
+      goNextPage = {this.goNextPage}/>;
+    } else if (this.state.currentPage === "userdata") {
+      content = <div> 
+      <UserList userInfo={this.state.user} />
 
-         <br></br>
-        <UserList userInfo={this.state.user} />
-
-         <WeightInfo handleFormSubmit1={this.handleFormSubmit1}
-        handleInputChange1={this.handleInputChange}
-        newDate={this.state.date}
-        newWeight={this.state.weight}
-        newDW={this.state.dw}
+      <WeightInfo handleFormSubmit1={this.handleFormSubmit1}
+      goNextPage1 = {this.goNextPage1}
+      handleInputChange1={this.handleInputChange}
+      newDate={this.state.date}
+      newWeight={this.state.weight}
+      newDW={this.state.dw}
+    /> 
+    
+      <WeightList weightRecords={this.state.items1}
+          desiredWeight={this.state.user.dw}
         />
 
-        <WeightList weightRecords={this.state.items1}
-         desiredWeight={this.state.user.dw}
-        />
+        
+        
+        
+    </div>;
+    } else if (this.state.currentPage === "weightdata") {
+      content = <div> 
+         
 
-        <MealInfo handleFormSubmit2={this.handleFormSubmit2}
+          <MealInfo handleFormSubmit2={this.handleFormSubmit2}
           handleInputChange2={this.handleInputChange}
+          goNextPage2 = {this.goNextPage2}
           newDate={this.state.date}
           newMeal={this.state.meal}
           newCalories={this.state.calories}
-           />
+        />
 
-        <MealList items2={this.state.items2} desiredCalories={this.state.user.dmc}/>
+        <MealList items2={this.state.items2} desiredCalories={this.state.user.dmc} />
 
-        <ActivityInfo handleFormSubmit3={this.handleFormSubmit3}
-          handleInputChange3={this.handleInputChange}
-          newDate={this.state.date}
-          newActivity={this.state.activityType}
-          newBurnedCalories={this.state.burnedCalories}
-           />
-
-        <ActivityList items3={this.state.items3} 
-        desiredActivities={this.state.user.dac} 
-        newActivity1={this.state.activityType}/>
-
-        <h3> Dashboard </h3>
-        <Dashboard weightRecords={this.state.items1} 
-        desiredWeight={this.state.user.dw} 
-        items2={this.state.items2} 
-        desiredCalories={this.state.user.dmc} 
-        items3={this.state.items3} 
-        desiredActivities={this.state.user.dac}  />
-        </div>
-
-
-       
-  
-
-   }
-   
-   
-
-     return (
-       <div className="App">
-         {/*<Headline />*/}
-         {/*regForm*/}
         
+        
+    </div>;
+    } else if (this.state.currentPage === "mealtdata") {
+      content = <div> 
+
+        <MealList items2={this.state.items2} desiredCalories={this.state.user.dmc} />
+
+        <ActivityInfo onNewActivity={this.handleNewActivity} />
+        
+        <ActivityList activities={this.state.activityList} userDac={this.state.user.dac} />
+
+        
+        
+    </div>;
+    } 
+    else {
+      content = <div>
+        <ActivityInfo onNewActivity={this.handleNewActivity} />
+
+<ActivityList activities={this.state.activityList} userDac={this.state.user.dac} />
+
+<h3> Dashboard </h3>
+<Dashboard weightRecords={this.state.items1}
+  desiredWeight={this.state.user.dw}
+  items2={this.state.items2}
+  desiredCalories={this.state.user.dmc}
+  items3={this.state.activityList}
+  desiredActivities={this.state.user.dac} />
+
+<button id="logout" type="button" value="Submit1" onClick={() => this.changePage("reg")}>Log out</button>
+
+        
+      </div>
+
+
+
+
+
+    }
+
+
+
+    return (
+      <div className="App">
+        {/*<Headline />*/}
+        {/*regForm*/}
+
         {content}
-  //     </div>
+      </div>
     );
   }
 }

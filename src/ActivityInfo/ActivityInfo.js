@@ -2,48 +2,61 @@ import React, { Component } from 'react';
 
 import './ActivityInfo.css';
 class ActivityInfo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: new Date(),
+      activityType: "Hiking",
+      distance: 0
+    };
+  }
+
   render() {
     return (
       <div id="RegForm">
-        <h3>Information Desk</h3>  
-        <form className="UserForm" onSubmit={this.props.handleFormSubmit3}>
+        <h3>Create Your Activity History</h3>
+        <form className="UserForm" onSubmit={(e) => {
+          e.preventDefault();
+          console.log("New activity added: ", this.state);
+          this.props.onNewActivity(this.state);
+        }}>
 
           <label className="label3" htmlFor="date">
-          Date:
-          <input id="date" value={this.props.newDate} 
-            type="date" name="date"
-           onChange={this.props.handleInputChange3} />
-    </label> 
-
-    
-
-          
-          <label className="label3" htmlFor="actvityType">
-          Activity Type:
-          <select id="activityType" value={this.props.newActivity} 
-            type="text" name="activityType"
-            onChange={this.props.handleInputChange3} >
-            <option value="Hiking">Hiking</option>
-            <option value="Running">Running</option>
-            <option value="Swiming">Swiming</option> 
-         </select>
-        
-          </label>
-
-          <label className="label3" htmlFor="weight">
-          Distance:
-          <input id="burnedCalories" value={this.props.newBurnedCalories} 
-            type="number" name="burnedCalories"
-            onChange={this.props.handleInputChange3} />
+            Date:
+          <input id="date" value={this.state.date}
+              type="date" name="date"
+              onChange={(e) => this.setState({ date: e.target.value })} />
           </label>
 
 
-        
+
+
+          <label className="label3" htmlFor="activityType">
+            Activity Type:
+          <select id="activityType" value={this.state.activityType}
+              type="text" name="activityType"
+              onChange={(e) => this.setState({ activityType: e.target.value })}>
+              <option value="Hiking">Hiking</option>
+              <option value="Running">Running</option>
+              <option value="Swimming">Swimming</option>
+          </select>
+
+          </label>
+
+          <label className="label3" htmlFor="distance">
+            Distance:
+          <input id="distance" value={this.state.distance}
+              type="number" name="distance"
+              onChange={(e) => this.setState({ distance: e.target.value })} />
+          </label>
+
+
+
           <button type="submit" value="Submit">Add</button>
           <br></br>
-          
+
         </form>
-      </div>
+      </div >
     );
   }
 }

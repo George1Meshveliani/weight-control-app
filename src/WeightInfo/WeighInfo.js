@@ -7,7 +7,7 @@ class WeightInfo extends React.Component {
   render() {
     return (
       <div id="RegForm">
-        <h3>Information Desk</h3>  
+        <h3>Create Your Weight History</h3>  
         <form className="UserForm1" onSubmit={this.props.handleFormSubmit1}>
           <label className="label1" htmlFor="date">
           Date:
@@ -26,6 +26,8 @@ class WeightInfo extends React.Component {
         
           <button type="submit" value="Submit">Add</button>
           <br></br>
+          <button type="button" onClick={this.props.goNextPage1}>Next</button>
+          
           
         </form>
       </div>

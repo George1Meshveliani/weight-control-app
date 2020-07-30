@@ -4,21 +4,29 @@ import React, { Component } from 'react';
 
 class ActivityList extends React.Component {
   render() {
-    
-   const desiredActivities = this.props.desiredActivities;
-    const items3 = this.props.items3;
-    let b = 1;
-    if (this.props.newActivity === "Hiking") {
-         b = 40;
-    }
 
-    if (this.props.newActivity === "Running") {
-        b = 140;
-    }
+    const userDac = this.props.userDac;
 
-    if (this.props.newActivity === "Running") {
-        b = 300;
-    }
+    let activities = this.props.activities.map(activity => {
+      let coef = -1;
+      if (activity.activityType === "Hiking") {
+        coef = 40;
+      } else if (activity.activityType === "Running") {
+        coef = 140;
+      } else if (activity.activityType === "Swimming") {
+        coef = 300;
+      }
+      activity.burnedCalories = +activity.distance * coef;
+      return (
+        <tr>
+          <td>{activity.date}</td>
+          <td >{activity.activityType}</td>
+          <td style={{ color: (+activity.burnedCalories <= userDac) ? 'red' : 'green' }}  >
+            {+activity.burnedCalories}</td>
+        </tr>
+      );
+    });
+
     return (
       <div id="ActivityList" >
         <table>
@@ -27,19 +35,8 @@ class ActivityList extends React.Component {
               <th>Date:</th>
               <th>Activity Type:</th>
               <th>Burned Calories:</th>
-              </tr>
-            {items3.map(item => {
-              return (
-                <tr>
-                  <td>{item.date}</td>
-                  <td>{item.activityType}</td>
-                  <td style = {{color: (+item.burnedCalories <= desiredActivities) ? 'red' : 'green'}} >
-                      {+item.burnedCalories*b}</td>
-                      
-                </tr>
-                
-              );
-            })}
+            </tr>
+            {activities}
           </tbody>
         </table>
       </div>

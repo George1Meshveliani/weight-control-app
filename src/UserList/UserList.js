@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class UserList extends React.Component {
   render() {
-    if (!this.props.userInfo.username) return <h2>Please fill out the reg form!</h2>;
+    if (!this.props.userInfo.username) return <h2>Please fill out the registration form!</h2>;
     
     const items = [this.props.userInfo];
     return (

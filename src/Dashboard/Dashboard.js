@@ -34,13 +34,11 @@ class Dashboard extends React.Component {
         <table>
           <tbody>
             <tr>
-              <th>Date:</th>
               <th>Weight:</th>
               </tr>
             {weightRecords.map(item => {
               return (
                 <tr>
-                  <td>{item.date}</td>
                   <td  style={{color: (+item.weight <= desiredWeight) ? 'green' : 'red'}} >{item.weight}</td>
                 </tr>
               );

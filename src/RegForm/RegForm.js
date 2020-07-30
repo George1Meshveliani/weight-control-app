@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import './RegForm.css';
+//import './Headline.css';
 class RegForm extends React.Component {
 
   constructor(props) {
@@ -15,7 +16,7 @@ class RegForm extends React.Component {
     // const value = target.name === 'isTrue' ? target.checked : target.value;
 
     this.setState({
-      [target.name]: target.value
+      [event.target.name]: target.value
     });
   }
 
@@ -27,6 +28,8 @@ class RegForm extends React.Component {
   render() {
     return (
       <div id="RegForm">
+        
+     
         <h3>During the registration, please consider following: desired weight-DW, desired meal calories per day-
             DMC, desired activity calories per day-DAC</h3>  
         <form className="UserForm" onSubmit={this.handleSubmit}>
@@ -62,6 +65,7 @@ class RegForm extends React.Component {
           </label>
           <button type="submit" value="Submit">Register</button>
           <br></br>
+          <button type="button" onClick={this.props.goNextPage}>Next</button>
           
         </form>
       </div>

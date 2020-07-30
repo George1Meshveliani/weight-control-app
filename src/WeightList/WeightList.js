@@ -26,7 +26,9 @@ class WeightList extends React.Component {
                   <td>{item.date}</td>
                   <td  style={{color: (+item.weight <= desiredWeight) ? 'green' : 'red'}} >{item.weight}</td>
                 </tr>
+                
               );
+              
             })}
           </tbody>
         </table>
