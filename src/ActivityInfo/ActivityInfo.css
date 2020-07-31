@@ -1,4 +1,4 @@
-#date, #activityType, #burnedCalories {
+#date, #activityType, #burnedCalories, #distance {
     display: flex;
     width: 90%;
     height: 2.375rem;

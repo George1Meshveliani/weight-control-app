@@ -203,7 +203,8 @@ class App extends Component {
     </div>;
     } else if (this.state.currentPage === "weightdata") {
       content = <div> 
-         
+
+          <UserList userInfo={this.state.user} />
 
           <MealInfo handleFormSubmit2={this.handleFormSubmit2}
           handleInputChange2={this.handleInputChange}
@@ -221,6 +222,8 @@ class App extends Component {
     } else if (this.state.currentPage === "mealtdata") {
       content = <div> 
 
+        <UserList userInfo={this.state.user} />
+        
         <MealList items2={this.state.items2} desiredCalories={this.state.user.dmc} />
 
         <ActivityInfo onNewActivity={this.handleNewActivity} />
