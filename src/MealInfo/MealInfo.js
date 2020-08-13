@@ -6,13 +6,13 @@ class MealInfo extends React.Component {
     return (
       <div id="RegForm">
         <h3>Create Your Meal List</h3>  
-        <form className="UserForm" onSubmit={this.props.handleFormSubmit2}>
+        <form className="UserForm" onSubmit={this.props.handleMealInfoSubmit}>
 
           <label className="label2" htmlFor="date">
           Date:
           <input id="date" value={this.props.newDate} 
             type="date" name="date"
-           onChange={this.props.handleInputChange2} />
+           onChange={this.props.handleMealInputChange} />
           </label>
 
           
@@ -20,21 +20,21 @@ class MealInfo extends React.Component {
           Meal:
           <input id="meal" value={this.props.newMeal} 
             type="text" name="meal"
-            onChange={this.props.handleInputChange2} />
+            onChange={this.props.handleMealInputChange} />
           </label>
 
           <label className="label2" htmlFor="weight">
           Calories:
           <input id="calories" value={this.props.newCalories} 
             type="text" name="calories"
-            onChange={this.props.handleInputChange2} />
+            onChange={this.props.handleMealInputChange} />
           </label>
 
 
         
           <button type="submit" value="Submit">Add</button>
           <br></br>
-          <button type="button" onClick={this.props.goNextPage2}>Next</button>
+          <button type="button" onClick={this.props.goToLastPage}>Next</button>
           
         </form>
       </div>

@@ -65,7 +65,7 @@ class RegForm extends React.Component {
           </label>
           <button type="submit" value="Submit">Register</button>
           <br></br>
-          <button type="button" onClick={this.props.goNextPage}>Next</button>
+          <button type="button" onClick={this.props.goToWeightListPage}>Next</button>
           
         </form>
       </div>

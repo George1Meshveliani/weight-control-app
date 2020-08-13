@@ -37,7 +37,7 @@ class App extends Component {
       dmc: '',
       dac: '',
 
-      items: [],
+      itemsForUserList: [],
       items1: [],
       items2: [],
       activityList: [],
@@ -59,31 +59,31 @@ class App extends Component {
     //e.preventDefault();
   };
 
-  goNextPage = () => {
+  goToWeightListPage = () => {
     this.changePage("userdata");
   }
 
-  goNextPage1 = () => {
+  goToMealListPage = () => {
     this.changePage("weightdata");
   }
 
-  goNextPage2 = () => {
+  goToLastPage = () => {
     this.changePage("mealdata");
   }
 
-  handleFormSubmit1 = (e) => {
+  handleWeightInfoSubmit = (e) => {
     e.preventDefault();
 
-    let items1 = [...this.state.items1];
+    let items2= [...this.state.items2];
 
-    items1.push({
+    items2.push({
       date: this.state.date,
       weight: this.state.weight,
       dw: this.state.dw,
     });
 
     this.setState({
-      items1,
+      items2,
       weight: '',
       date: '',
       dw: ''
@@ -96,12 +96,12 @@ class App extends Component {
 
   
 
-  handleFormSubmit2 = (e) => {
+  handleMealInfoSubmit = (e) => {
     e.preventDefault();
 
-    let items2 = [...this.state.items2];
+    let itemsForMealList= [...this.state.itemsForMealList];
 
-    items2.push({
+    itemsForMealList.push({
       date: this.state.date,
       meal: this.state.meal,
       calories: this.state.calories,
@@ -109,7 +109,7 @@ class App extends Component {
     });
 
     this.setState({
-      items2,
+      itemsForMealList,
       date: '',
       meal: '',
       /* dw: '',
@@ -180,14 +180,14 @@ class App extends Component {
     let content;
     if (this.state.currentPage === "reg") {
       content = <RegForm onFormSubmit={this.handleRegFormSubmit} 
-      goNextPage = {this.goNextPage}/>;
+      goToWeightListPage = {this.goToWeightListPage}/>;
     } else if (this.state.currentPage === "userdata") {
       content = <div> 
       <UserList userInfo={this.state.user} />
 
-      <WeightInfo handleFormSubmit1={this.handleFormSubmit1}
-      goNextPage1 = {this.goNextPage1}
-      handleInputChange1={this.handleInputChange}
+      <WeightInfo handleWeightInfoSubmit={this.handleWeightInfoSubmit}
+      goToMealListPage = {this.goToMealListPage}
+      handleWeightInputChange={this.handleInputChange}
       newDate={this.state.date}
       newWeight={this.state.weight}
       newDW={this.state.dw}
@@ -206,9 +206,9 @@ class App extends Component {
 
           <UserList userInfo={this.state.user} />
 
-          <MealInfo handleFormSubmit2={this.handleFormSubmit2}
-          handleInputChange2={this.handleInputChange}
-          goNextPage2 = {this.goNextPage2}
+          <MealInfo handleMealInfoSubmit={this.handleMealInfoSubmit}
+          handleMealInputChange={this.handleInputChange}
+          goToLastPage = {this.goToLastPage}
           newDate={this.state.date}
           newMeal={this.state.meal}
           newCalories={this.state.calories}
@@ -223,7 +223,7 @@ class App extends Component {
       content = <div> 
 
         <UserList userInfo={this.state.user} />
-        
+
         <MealList items2={this.state.items2} desiredCalories={this.state.user.dmc} />
 
         <ActivityInfo onNewActivity={this.handleNewActivity} />
@@ -236,6 +236,7 @@ class App extends Component {
     } 
     else {
       content = <div>
+        <UserList userInfo={this.state.user} />
         <ActivityInfo onNewActivity={this.handleNewActivity} />
 
 <ActivityList activities={this.state.activityList} userDac={this.state.user.dac} />
@@ -252,15 +253,7 @@ class App extends Component {
 
         
       </div>
-
-
-
-
-
     }
-
-
-
     return (
       <div className="App">
         {/*<Headline />*/}

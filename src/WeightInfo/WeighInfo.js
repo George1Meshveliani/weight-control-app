@@ -8,12 +8,12 @@ class WeightInfo extends React.Component {
     return (
       <div id="RegForm">
         <h3>Create Your Weight History</h3>  
-        <form className="UserForm1" onSubmit={this.props.handleFormSubmit1}>
+        <form className="UserForm1" onSubmit={this.props.handleWeightInfoSubmit}>
           <label className="label1" htmlFor="date">
           Date:
           <input id="date" value={this.props.newDate} 
             type="date" name="date"
-           onChange={this.props.handleInputChange1} />
+           onChange={this.props.handleWeightInputChange} />
           </label>
 
           
@@ -21,12 +21,12 @@ class WeightInfo extends React.Component {
           Weight:
           <input id="weight" value={this.props.newWeight} 
             type="number" name="weight"
-            onChange={this.props.handleInputChange1} />
+            onChange={this.props.handleWeightInputChange} />
           </label>
         
           <button type="submit" value="Submit">Add</button>
           <br></br>
-          <button type="button" onClick={this.props.goNextPage1}>Next</button>
+          <button type="button" onClick={this.props.goToMealListPage}>Next</button>
           
           
         </form>
