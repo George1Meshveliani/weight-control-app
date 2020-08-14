@@ -37,7 +37,7 @@ class App extends Component {
       dmc: '',
       dac: '',
 
-      itemsForUserList: [],
+      items: [],
       items1: [],
       items2: [],
       activityList: [],
@@ -74,16 +74,16 @@ class App extends Component {
   handleWeightInfoSubmit = (e) => {
     e.preventDefault();
 
-    let items2= [...this.state.items2];
+    let items1= [...this.state.items1];
 
-    items2.push({
+    items1.push({
       date: this.state.date,
       weight: this.state.weight,
       dw: this.state.dw,
     });
 
     this.setState({
-      items2,
+      items1,
       weight: '',
       date: '',
       dw: ''
@@ -99,9 +99,9 @@ class App extends Component {
   handleMealInfoSubmit = (e) => {
     e.preventDefault();
 
-    let itemsForMealList= [...this.state.itemsForMealList];
+    let items2= [...this.state.items2];
 
-    itemsForMealList.push({
+    items2.push({
       date: this.state.date,
       meal: this.state.meal,
       calories: this.state.calories,
@@ -109,7 +109,7 @@ class App extends Component {
     });
 
     this.setState({
-      itemsForMealList,
+      items2,
       date: '',
       meal: '',
       /* dw: '',

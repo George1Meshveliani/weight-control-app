@@ -4,7 +4,7 @@ class UserList extends React.Component {
   render() {
     if (!this.props.userInfo.username) return <h2>Please fill out the registration form!</h2>;
     
-    const itemsForUserList = [this.props.userInfo];
+    const items = [this.props.userInfo];
     return (
       <div id="UserList">
         <table>
@@ -18,7 +18,7 @@ class UserList extends React.Component {
               <th>DAC</th>
               
             </tr>
-            {itemsForUserList.map(item => {
+            {items.map(item => {
               return (
                 <tr>
                   <td>{item.username}</td>
